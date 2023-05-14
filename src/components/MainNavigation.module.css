@@ -65,7 +65,8 @@ h1 span{
 
 }
 
-.link:hover{
+.link:hover,
+.linkScrolled:hover{
 background-color: #741906;
 color: white;
 border-radius: 5px;
@@ -198,6 +199,13 @@ justify-self: center;
     color: #fff;
    
    }
+
+  .link:hover
+  .linkScrolled:hover{
+    background-color: #741906;
+    padding: 2rem 0;
+    margin: 0;
+  }
 
   .cartIcon{
     right: 10%;

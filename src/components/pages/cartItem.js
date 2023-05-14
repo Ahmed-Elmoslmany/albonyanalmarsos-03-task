@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import classes from "./cartItem.module.css";
 import classesBtn from "./Car.module.css";
 import { IoTrashOutline } from "react-icons/io5";
@@ -6,7 +6,6 @@ import CartContext from "../../store/cart-context";
 const CartItem = (props) => {
 
   let [carsNumber, setCarsNumber] = useState(1);
-  let [cartList, setCartList] = useState([]);
   const cartCtx = useContext(CartContext)
   
   const carsIncrementHandler = () => {
@@ -18,10 +17,11 @@ const CartItem = (props) => {
   const carsDecrementHandler = () => {
     if(carsNumber > 1){
       
-      setCartList(cartCtx.items)
+      setCarsNumber(--carsNumber)
+
      
     }else{
-      setCartList(cartCtx.items)
+      
       cartCtx.removeItem(props.id)
     }
 

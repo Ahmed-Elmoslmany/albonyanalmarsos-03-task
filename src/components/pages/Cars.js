@@ -20,7 +20,7 @@ const Cars = (props) => {
 
   console.log(cars);
   function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
+    const {  style, onClick } = props;
     return (
       <div className={classes.carsGalleryIcDiv}>
         <IoChevronForward
@@ -33,7 +33,7 @@ const Cars = (props) => {
   }
 
   function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
+    const { style, onClick } = props;
     return (
       <div className={classes.carsGalleryIcDiv}>
         <IoChevronBack

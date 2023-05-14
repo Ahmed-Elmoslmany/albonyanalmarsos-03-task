@@ -1,6 +1,5 @@
 import classes from "./Home.module.css";
 import { IoArrowForwardSharp } from "react-icons/io5";
-import MainNagivation from "../MainNavigation";
 const Home = () => {
   
   return (

@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import classes from "./MainNavigation.module.css";
-import { BrowserRouter, Link, NavLink, Navigate } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import CartContext from "../store/cart-context";
 import CartItem from "./pages/cartItem";

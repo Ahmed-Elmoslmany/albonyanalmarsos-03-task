@@ -87,13 +87,20 @@ p{
 .carPara{
   margin-bottom: 2rem;
   max-height: 10rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6; /* start showing ellipsis when 3rd line is reached */
+  white-space: pre-wrap; 
+  
+  
   
 }
 
 @media screen and (max-width: 420px) {
 
 .cardBottom{
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 }

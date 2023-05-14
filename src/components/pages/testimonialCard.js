@@ -8,7 +8,6 @@ const TestimonialCard = (props) => {
       <p className={classes.testiPara}>
         {props.description}
       </p>
-      <p className={classes.testiPara2}>for a luxury car buying experience.</p>
       <div className={classes.stars}>
         <IoStar className={classes.starIn}/>
         <IoStar className={classes.starIn}/>
