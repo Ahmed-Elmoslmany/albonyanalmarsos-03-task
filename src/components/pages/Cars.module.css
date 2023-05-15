@@ -10,6 +10,10 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  
+  margin-left: -2.8rem;
+  margin-right: -2.8rem;
+
 }
 .car{
   font-size: 6.4rem;
@@ -68,6 +72,17 @@ background-color: #741906;
 .carsGalleryIcDiv{
   padding: 0.3rem;
 }
-  
+.slider{
+  margin-left: -3.2rem;
+  margin-right: -3.2rem;
+}
 }
 
+@media screen and (max-width: 360px) {
+  
+  .slider{
+    margin-left: -3.2rem;
+    margin-right: -3.2rem;
+  }
+  
+}

@@ -29,3 +29,13 @@
 }
 
 }
+
+@media screen and (max-width: 360px) {
+  .testimonialsBig{
+    font-size: 3.2rem;
+  }
+  .testimonialsSmall{
+    font-size: 2.4rem;
+    margin-top: -2rem;
+  }
+  }
