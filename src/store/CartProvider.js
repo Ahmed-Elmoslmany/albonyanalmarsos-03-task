@@ -3,17 +3,20 @@ import { useReducer } from 'react';
 import CartContext from './cart-context';
 
 const defaultCartState = {
-  items: [],
+  items: [] || JSON.parse(localStorage.getItem("cartItems")),
   
 };
 
+console.log(defaultCartState);
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
+    // action.item.carsNumber = action.item.carsNumber + 1
     const updatedItems = state.items.concat(action.item);
     return {
       items: updatedItems,
     };
   }
+  
   if(action.type === 'REMOVE'){
     const existingCartIndex = state.items.findIndex(
       (item) => item.id === action.id

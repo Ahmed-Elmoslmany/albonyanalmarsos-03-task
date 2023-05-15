@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext,useEffect } from "react";
 import CartContext from "../../store/cart-context";
 import classes from "./Car.module.css";
 import { IoAccessibility } from "react-icons/io5";
@@ -8,13 +8,21 @@ const Car = (props) => {
   let obj={}
   let [carsNumber, setCarsNumber] = useState(0);
 
-  if(cartCtx.items.length){
+
+  useEffect(() => {
+    if(JSON.parse(localStorage.getItem("cartItems")) && JSON.parse(localStorage.getItem("cartItems")).length > 0){
+      // console.log(JSON.parse(localStorage.getItem("cartItems")));
+      cartCtx.items = JSON.parse(localStorage.getItem("cartItems"));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   
-  }
+  
   const carsIncrementHandler = () => {
     if(!carsNumber){
       
       setCarsNumber(++carsNumber)
+
       cartCtx.addItem({
         id: props.id,
         name: props.name,
@@ -40,7 +48,13 @@ const Car = (props) => {
     }
   }
   console.log(obj.carsNumber);
-  
+
+  useEffect(() => {
+    if(cartCtx.items){
+    localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
+    }
+  }, [cartCtx.items])
+ 
   return (
     <div className={classes.card}>
       <div className={classes.cardHead}>

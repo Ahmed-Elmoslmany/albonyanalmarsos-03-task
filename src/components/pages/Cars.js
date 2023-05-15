@@ -8,6 +8,10 @@ import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 
 const Cars = (props) => {
   const [cars, setCars] = useState([]);
+  
+
+  
+
   const fetCars = (fetchUrl) => {
     fetch(fetchUrl)
       .then((res) => res.json())
@@ -96,13 +100,14 @@ const Cars = (props) => {
               return (
                 <Car
                   key={idx}
-                  id={Math.random() * 1000000}
+                  id={item.name}
                   name={item.name}
                   title={item.class}
                   description={item.description}
                   seats={item.seats}
                   luggage={item.luggage}
                   img={item.image}
+                  carsNumber={item.carsNumber}
                 />
               );
             })}

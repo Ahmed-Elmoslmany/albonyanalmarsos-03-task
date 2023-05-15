@@ -10,16 +10,30 @@ const MainNagivation = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
   const [headerColor, setHeaderColor] = useState(false);
   const [cartHide, setCartHide] = useState(true);
-  const [cartItemsNumber, setCartItemsNumber] = useState(true);
+  const [cartItemsNumber, setCartItemsNumber] = useState(0);
   
   const cartCtx = useContext(CartContext)
+  
   useEffect( ()=> {
+    
     setCartItemsNumber(cartCtx.items.length)
+    
   }, [cartCtx.items.length])
+
+  useEffect(() => {
+      // console.log(JSON.parse(localStorage.getItem("cartItems")));
+      if(JSON.parse(localStorage.getItem("cartItems")) && JSON.parse(localStorage.getItem("cartItems")).length > 0){
+      cartCtx.items = JSON.parse(localStorage.getItem("cartItems"));
+      }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
 
   const deleteAllCartItemsHandler = () => {
     cartCtx.items = [];
     setCartHide(!cartHide)
+    localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
+
   }
 
   console.log(cartCtx.items.length);

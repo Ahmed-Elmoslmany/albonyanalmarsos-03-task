@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import classes from "./cartItem.module.css";
 import classesBtn from "./Car.module.css";
 import { IoTrashOutline } from "react-icons/io5";
@@ -8,6 +8,14 @@ const CartItem = (props) => {
   let [carsNumber, setCarsNumber] = useState(1);
   const cartCtx = useContext(CartContext)
   
+  useEffect(() => {
+    if(JSON.parse(localStorage.getItem("cartItems")) && JSON.parse(localStorage.getItem("cartItems")).length > 0){
+      // console.log(JSON.parse(localStorage.getItem("cartItems")));
+      cartCtx.items = JSON.parse(localStorage.getItem("cartItems"));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const carsIncrementHandler = () => {
     setCarsNumber(++carsNumber)
 
@@ -23,13 +31,23 @@ const CartItem = (props) => {
     }else{
       
       cartCtx.removeItem(props.id)
+      localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
+
     }
 
   }
 
   const deleteCartItemHandler = () => {
     cartCtx.removeItem(props.id)
+    localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
+
   }
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
+
+  }, [cartCtx.items])
+
   return (
     <div>
       
