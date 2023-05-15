@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import CartContext from './cart-context';
 
 const defaultCartState = {
-  items: [] || JSON.parse(localStorage.getItem("cartItems")),
+  items: JSON.parse(localStorage.getItem("cartItems")) || [],
   
 };
 
