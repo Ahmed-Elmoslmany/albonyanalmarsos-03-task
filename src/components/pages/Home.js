@@ -3,7 +3,7 @@ import { IoArrowForwardSharp } from "react-icons/io5";
 const Home = () => {
   
   return (
-    <div className={classes.home}>
+    <div className={classes.home} id="home">
       
       <div className={classes.rightText}>
 

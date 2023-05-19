@@ -1,11 +1,11 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import classes from "./cartItem.module.css";
 import classesBtn from "./Car.module.css";
 import { IoTrashOutline } from "react-icons/io5";
 import CartContext from "../../store/cart-context";
 const CartItem = (props) => {
 
-  let [carsNumber, setCarsNumber] = useState(1);
+  // let [carsNumber, setCarsNumber] = useState(1);
   const cartCtx = useContext(CartContext)
   
   useEffect(() => {
@@ -16,29 +16,29 @@ const CartItem = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const carsIncrementHandler = () => {
-    setCarsNumber(++carsNumber)
+  const item = cartCtx.items.find(item => item.id === props.id)
 
+  let carsNumber = undefined;
+  if(item){
+    carsNumber = item.carsNumber
   }
 
-  
-  const carsDecrementHandler = () => {
-    if(carsNumber > 1){
-      
-      setCarsNumber(--carsNumber)
+  const carsIncrementHandler = () => {
+    cartCtx.addItem({
+      id: props.id,
+      name: props.name,
+      title: props.title,
+      img: props.img,
+    })
+  }
 
-     
-    }else{
-      
+  const carsDecrementHandler = () => {
       cartCtx.removeItem(props.id)
       localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
-
-    }
-
   }
 
   const deleteCartItemHandler = () => {
-    cartCtx.removeItem(props.id)
+    cartCtx.removeFromCart(props.id)
     localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
 
   }
@@ -65,7 +65,7 @@ const CartItem = (props) => {
                 -
               </button>
           
-              <p>{carsNumber}</p>
+              <p>{carsNumber || 0}</p>
               <button
                 className={classesBtn.cardBtnRight}
                 onClick={carsIncrementHandler}

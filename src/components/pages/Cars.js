@@ -100,7 +100,7 @@ const Cars = (props) => {
               return (
                 <Car
                   key={idx}
-                  id={item.name}
+                  id={idx}
                   name={item.name}
                   title={item.class}
                   description={item.description}

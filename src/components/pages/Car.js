@@ -4,9 +4,17 @@ import classes from "./Car.module.css";
 import { IoAccessibility } from "react-icons/io5";
 import { IoBag } from "react-icons/io5";
 const Car = (props) => {
+  
   const cartCtx = useContext(CartContext);
-  let obj={}
-  let [carsNumber, setCarsNumber] = useState(0);
+  
+  // let [carsNumber, setCarsNumber] = useState(0);
+
+  const item = cartCtx.items.find(item => item.id === props.id)
+
+  let carsNumber = undefined;
+  if(item){
+    carsNumber = item.carsNumber
+  }
 
 
   useEffect(() => {
@@ -17,37 +25,24 @@ const Car = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-  
   const carsIncrementHandler = () => {
-    if(!carsNumber){
-      
-      setCarsNumber(++carsNumber)
-
       cartCtx.addItem({
         id: props.id,
         name: props.name,
         title: props.title,
         img: props.img,
-        carsNumber: 1
+     
       })
-      return
-      // console.log(cartCtx.items);
-    }
-
-    setCarsNumber(++carsNumber)
+      localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
+      console.log(cartCtx.items);
   }
 
   const carsDecrementHandler = () => {
-    if(carsNumber > 1){
-      setCarsNumber(--carsNumber)
-      
-    }else{
-      setCarsNumber(--carsNumber)
-
       cartCtx.removeItem(props.id)
-    }
+      localStorage.setItem('cartItems', JSON.stringify(cartCtx.items))
+
   }
-  console.log(obj.carsNumber);
+  // console.log(obj.carsNumber);
 
   useEffect(() => {
     if(cartCtx.items){
@@ -83,7 +78,7 @@ const Car = (props) => {
             -
           </button>
           
-          <p>{carsNumber}</p>
+          <p>{carsNumber || 0}</p>
           <button
             className={classes.cardBtnRight}
             onClick={carsIncrementHandler}
