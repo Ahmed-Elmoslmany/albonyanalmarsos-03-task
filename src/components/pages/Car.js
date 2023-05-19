@@ -1,4 +1,4 @@
-import { useState, useContext,useEffect } from "react";
+import { useContext,useEffect } from "react";
 import CartContext from "../../store/cart-context";
 import classes from "./Car.module.css";
 import { IoAccessibility } from "react-icons/io5";
